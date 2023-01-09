@@ -1,7 +1,6 @@
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.* ;
 public class main
 {
     public static void main(String[] args)
@@ -12,6 +11,10 @@ public class main
 }
 class Window
 {
+    /*private void  raschet(int x, int y)
+    {
+
+    }*/
     private static void exit()
     {
         System.exit(0);
@@ -20,28 +23,28 @@ class Window
     {
         JFrame okno = new JFrame("Main window");
         JButton btn  = new JButton("exit");
-        JLabel jl = new JLabel("Bye");
+        JButton msg = new JButton("msg");
+        JTextField textField = new JTextField(null);
+        textField.setBounds(50,100,200,30);
+        msg.setActionCommand("msg is pressed!");
+        msg.setBounds(80,200,85,20);
         btn.setBounds(180,200,85,20);
-
-    btn.addActionListener(new ActionListener() 
-    {
-        public void actionPerformed(ActionEvent e) 
-            {
-                jl.setBounds(40,40,90,20);
-
-                try 
-                {
-                    Thread.sleep(2000);
-                } 
-                catch (InterruptedException e1) 
-                {
-                    e1.printStackTrace();
-                }
-                exit();
+  
+        msg.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                 textField.setText(e.getActionCommand());
+                
             }
-        });
+       });
+       btn.addActionListener(new ActionListener() {
+        public void actionPerformed(ActionEvent e) {
+                exit();
+        }
+   });
+
         okno.add(btn);
-        okno.add(jl);
+        okno.add(msg);
+        okno.add(textField);
         okno.setSize(300, 300);
         okno.setLayout(null);
         okno.setVisible(true);
