@@ -11,10 +11,6 @@ public class main
 }
 class Window
 {
-    /*private void  raschet(int x, int y)
-    {
-
-    }*/
     private static void exit()
     {
         System.exit(0);
