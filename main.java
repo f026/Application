@@ -1,48 +1,74 @@
-import javax.swing.*;
+ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 public class main
 {
     public static void main(String[] args)
     {
-        Window w = new Window();
+        MainWindow w = new MainWindow();
         w.window();
     }
 }
-class Window
+class Settings
 {
+ 
+    public static void window()
+    {
+        JFrame settings = new JFrame("settings");
+        JButton exit  = new JButton("выход");
+        exit.setBounds(180,200,90,20);
+       exit.addActionListener(new ActionListener() 
+       {
+        public void actionPerformed(ActionEvent e) 
+        {   
+            settings.dispose();
+            MainWindow w = new MainWindow();
+            w.window();       
+        }
+        });
+
+        settings.add(exit);
+        settings.setSize(300, 300);
+        settings.setLayout(null);
+        settings.setVisible(true);
+    }
+}
+class MainWindow
+{
+    
     private static void exit()
     {
         System.exit(0);
     }
-    public static void window()
+    public void window()
     {
-        JFrame okno = new JFrame("Main window");
-        JButton btn  = new JButton("exit");
-        JButton msg = new JButton("msg");
-        JTextField textField = new JTextField(null);
-        textField.setBounds(50,100,200,30);
-        msg.setActionCommand("msg is pressed!");
-        msg.setBounds(80,200,85,20);
-        btn.setBounds(180,200,85,20);
-  
-        msg.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                 textField.setText(e.getActionCommand());
-                
+        Settings sett = new Settings();
+        JFrame window = new JFrame("Main window");
+        JButton exit  = new JButton("выход");
+        JButton settings = new JButton("настройки");
+        settings.setBounds(80,200,90,20);
+        exit.setBounds(180,200,90,20);
+        settings.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) 
+            {
+                window.dispose();
+
+                sett.window();
             }
        });
-       btn.addActionListener(new ActionListener() {
-        public void actionPerformed(ActionEvent e) {
+       exit.addActionListener(new ActionListener() 
+       {
+        public void actionPerformed(ActionEvent e) 
+        {
+
                 exit();
         }
-   });
+        });
 
-        okno.add(btn);
-        okno.add(msg);
-        okno.add(textField);
-        okno.setSize(300, 300);
-        okno.setLayout(null);
-        okno.setVisible(true);
+        window.add(exit);
+        window.add(settings);
+        window.setSize(300, 300);
+        window.setLayout(null);
+        window.setVisible(true);
     }
 }
