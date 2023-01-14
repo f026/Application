@@ -48,7 +48,8 @@ class MainWindow
         JButton settings = new JButton("настройки");
         settings.setBounds(80,200,90,20);
         exit.setBounds(180,200,90,20);
-        settings.addActionListener(new ActionListener() {
+        settings.addActionListener(new ActionListener()
+         {
             public void actionPerformed(ActionEvent e) 
             {
                 window.dispose();
